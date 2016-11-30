@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://spring-soap-app.com.br" xmlns:tns="http://spring-soap-app.com.br"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="country" type="tns:country"/>
+
+	<xs:element name="getAllCountriesRequest" type="tns:getAllCountriesRequest"/>
+
+	<xs:element name="getAllCountriesResponse" type="tns:getAllCountriesResponse"/>
+
+	<xs:element name="getCountryByCodeRequest" type="tns:getCountryByCodeRequest"/>
+
+	<xs:element name="getCountryByCodeResponse" type="tns:getCountryByCodeResponse"/>
+
+	<xs:complexType name="getAllCountriesRequest">
+		<xs:sequence/>
+	</xs:complexType>
+
+	<xs:complexType name="getAllCountriesResponse">
+		<xs:sequence>
+			<xs:element name="countries" type="tns:country" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="country">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="0"/>
+			<xs:element name="currencyCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getCountryByCodeResponse">
+		<xs:sequence>
+			<xs:element ref="tns:country" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getCountryByCodeRequest">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
+
